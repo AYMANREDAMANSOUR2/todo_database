@@ -12,7 +12,7 @@ class MyDataBase {
         toFirestore: (task, options) {return task.toFireStore();});
   }
 //-----------------------------------------------------------
-  static Future<void> addTask(Task task) {
+  static Future<void> addTask(Task task) { //future because it will take time to insert data
     var taskDoc = getTasksCollection()
         .doc();
     task.dateTime = dateOnly(task.dateTime!);
@@ -20,11 +20,16 @@ class MyDataBase {
     return taskDoc.set(task);
   }
   //----------------------------------------------------------
-  static Future<QuerySnapshot<Task>> getTasks(
-      DateTime dateTime)async{
+  static Future<QuerySnapshot<Task>> getTasks(DateTime dateTime) async{
+    //Read Data Once
     var collection = getTasksCollection()
-        .where('dateTime',isEqualTo: dateOnly(dateTime).millisecondsSinceEpoch);
+        .where('dateTime',isEqualTo: dateOnly(dateTime).millisecondsSinceEpoch); //to get data on the selected data only
     return collection.get();
+  }
+  // listen for real time updates
+  static  Stream<QuerySnapshot<Task>>listenForTaskUpdates(){
+    var collection = getTasksCollection();
+    return collection.snapshots();
   }
   //--------------------------------------------------------------
   static Future<void>deleteTask(Task task){
@@ -33,9 +38,6 @@ class MyDataBase {
     return taskRef.delete();
   }
   //----------------------------------------------------------------
-  static  Stream<QuerySnapshot<Task>>listenForTaskUpdates(){
-    var collection = getTasksCollection();
-    return collection.snapshots();
-  }
+
 
 }

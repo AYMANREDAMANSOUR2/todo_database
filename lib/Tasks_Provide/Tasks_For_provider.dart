@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Models/Task(tofirebase&fromfirebase).dart';
-import '../Utils/Firebase_fireStore.dart';
+import '../Utils/Firebase_fireStore(DataBase).dart';
 class TasksProvider extends ChangeNotifier{
   List<Task> tasks = [];
   var date = DateTime.now();

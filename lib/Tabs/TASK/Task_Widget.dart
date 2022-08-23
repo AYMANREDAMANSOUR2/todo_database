@@ -3,7 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import '../../Tasks_Provide/Tasks_For_provider.dart';
-import '../../Utils/Firebase_fireStore.dart';
+import '../../Utils/Firebase_fireStore(DataBase).dart';
 import '../../Utils/Ui_Utils.dart';
 import '../../Models/Task(tofirebase&fromfirebase).dart';
 
@@ -74,19 +74,21 @@ class _TaskWidgetState extends State<TaskWidget> {
               ),
             ),
             Container(
+
               decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(20),
               ),
                padding: EdgeInsets.symmetric(vertical: 5,horizontal:5),
               child: Container(
-                  width: 80,
+
+                  width: 50,
                   height: 50,
                   child: InkWell(
                     onTap: (){
 
                     },
-                      child: Lottie.network("https://assets9.lottiefiles.com/datafiles/x4WYMt3Jz674U59/data.json" ,)))
+                      child: Lottie.network("https://assets3.lottiefiles.com/packages/lf20_2mm5zqab.json" ,)))
             )
           ],
         ),

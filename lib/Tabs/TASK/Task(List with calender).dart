@@ -1,8 +1,12 @@
 import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../Provider_Setting/provider.dart';
 import '../../Tasks_Provide/Tasks_For_provider.dart';
 import 'Task_Widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
 
 class TasksListTab extends StatefulWidget {
   @override
@@ -13,6 +17,7 @@ class _TasksListTabState extends State<TasksListTab> {
   DateTime _selectedDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
+    var provider2 = Provider.of<AppProvider>(context) ;
     var provider = Provider.of<TasksProvider>(context);
     return Container(
       child: Column(
@@ -29,14 +34,13 @@ class _TasksListTabState extends State<TasksListTab> {
               });
             },
             leftMargin: 20,
-            monthColor: Colors.black,
-            dayColor: Colors.black,
+            monthColor: provider2.isDark() ?  Colors.white :Colors.black ,
+            dayColor: provider2.isDark() ?  Colors.white :Colors.black ,
             dayNameColor: Theme.of(context).primaryColor,
             activeDayColor: Theme.of(context).primaryColor,
             activeBackgroundDayColor: Colors.white,
             dotsColor: Color(0xFF333A47),
-            selectableDayPredicate: (date) => date.day != 23,
-            locale: 'en',
+            // selectableDayPredicate: (date) => date.day != 23,
           ),
           Expanded(
               child: ListView.separated(
@@ -63,7 +67,8 @@ StreamBuilder<QuerySnapshot<Task>>(
                   }else if(snapshot.connectionState ==ConnectionState.waiting){
                     return Center(child: CircularProgressIndicator());
                   }
-                  var data= snapshot.data?.docs.map((docSnapshot){
+                  // there
+                    var data= snapshot.data?.docs.map((docSnapshot){
                     return docSnapshot.data();
                   },);
                  return  ListView.separated(itemBuilder: (buildContext,index){

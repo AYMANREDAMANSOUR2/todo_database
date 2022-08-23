@@ -16,49 +16,51 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Todo App'),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        shape: StadiumBorder(
-            side: BorderSide(
-                color: Colors.white, width: 4)),
-        onPressed: (){
-          showAddTaskBottomSheet();
-        },
-        child: Lottie.network('https://assets10.lottiefiles.com/packages/lf20_tf6wSv.json'
+    return Container(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Todo App'),
         ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        notchMargin: 8,
-        child: BottomNavigationBar(
-          currentIndex: selectedIndex,
-          onTap: (index){
-            selectedIndex = index;
-            setState(() {
-
-            });
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.black,
+          elevation: 0,
+          shape: StadiumBorder(
+              side: BorderSide(
+                  color: Colors.white, width: 1)),
+          onPressed: (){
+            showAddTaskBottomSheet();
           },
-          showUnselectedLabels: false,
-          showSelectedLabels: false,
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.list),
-                label: 'List'
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
-                label: 'Setting'
-            ),
-          ],
+          child: Lottie.network('https://assets9.lottiefiles.com/packages/lf20_6JcVlW.json',
+          ),
         ),
+        bottomNavigationBar: BottomAppBar(
+          shape: CircularNotchedRectangle(),
+          notchMargin: 8,
+          child: BottomNavigationBar(
+            currentIndex: selectedIndex,
+            onTap: (index){
+              selectedIndex = index;
+              setState(() {
+
+              });
+            },
+            showUnselectedLabels: false,
+            showSelectedLabels: false,
+            items: [
+              BottomNavigationBarItem(
+                  icon: Lottie.network("https://assets2.lottiefiles.com/packages/lf20_msy5e6qj.json",width: 100,height: 45),
+                  label: 'List'
+              ),
+              BottomNavigationBarItem(
+                  icon: Lottie.network("https://assets3.lottiefiles.com/packages/lf20_jhagciag.json",width: 100),
+                  label: 'Setting'
+              ),
+            ],
+          ),
+        ),
+        body: tabs[selectedIndex],
       ),
-      body: tabs[selectedIndex],
     );
   }
 

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../Tasks_Provide/Tasks_For_provider.dart';
-import '../../Utils/Firebase_fireStore.dart';
+import '../../Utils/Firebase_fireStore(DataBase).dart';
 import '../../Utils/Ui_Utils.dart';
 import '../../Models/Task(tofirebase&fromfirebase).dart';
 
@@ -98,23 +98,25 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
       showLoading(context,'Loading...',isCancelable: false);
       MyDataBase.addTask(newTask)  //To add the task which i input it
       //---------------------------------------------------------------
-          .then((value) {
-        provider.retrieveTasks(); // to make the th ui restart when i add task
+          .then((value) { // it will happen when future complete
+        provider.retrieveTasks(); // to make the the ui restart when i add task
         hideLoading(context);
-        showMessage(context, 'task added successfully',
+        showMessage(context, 'task added successfully locally and firebase',
             posActionName: 'ok',posActionCallBack: (){
               Navigator.pop(context);
+
+
             });
 //---------------------improve accessibility-------------------------------------------
 //        Navigator.pop(context);
-      }).onError((error, stackTrace) {
+      }).onError((error, stackTrace) { // when future fails
         hideLoading(context);
         showMessage(context, error.toString());
 //-------------------------------------------------------------
       }).timeout(const Duration(seconds: 10),onTimeout:() {
         hideLoading(context);
         provider.retrieveTasks();
-        showMessage(context, 'Error connecting to server,''please try again',posActionName: 'ok');
+        showMessage(context, 'Error connecting to server,''please try again',posActionName: ' I Will');
 //----------------------------------------------------------------
       },).timeout(const Duration(seconds: 5,),onTimeout: (){
         hideLoading(context);

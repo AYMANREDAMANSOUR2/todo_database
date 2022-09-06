@@ -10,7 +10,7 @@ class MyTheme {
   static final ThemeData lightTheme = ThemeData( primaryColor: lightPrimary,
       // scaffoldBackgroundColor: lightScaffoldBackground,
       scaffoldBackgroundColor: Color.alphaBlend(Colors.cyan, Colors.black),
-
+      cardColor: Colors.black,
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -38,7 +38,8 @@ class MyTheme {
       )
   );
   static final ThemeData darkTheme = ThemeData( primaryColor: lightPrimary,
-       scaffoldBackgroundColor: darkScaffoldBackground,
+      cardColor: Colors.white,
+      scaffoldBackgroundColor: darkScaffoldBackground,
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: Colors.transparent,
         elevation: 0,

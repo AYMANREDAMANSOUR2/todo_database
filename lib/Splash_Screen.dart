@@ -13,7 +13,7 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 2), spla ) ;
+    Timer(Duration(seconds: 1), spla ) ;
   }
   void spla(){
     Navigator.pushNamed(context, HomeScreen.routeName) ;

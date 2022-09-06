@@ -27,14 +27,12 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3),
-            ()=>Navigator.pushReplacement(context,MaterialPageRoute(builder:(context) => HomeScreen())));
   }
   late  AppProvider provider ; //////////////////////////////
 
   Widget build(BuildContext context) {
     provider = Provider.of<AppProvider>(context); //////////////
-    return ChangeNotifierProvider(
+     return ChangeNotifierProvider(
       create: (buildContext)=>TasksProvider(),
       child: MaterialApp(
         locale: Locale(provider.currentLang) ,

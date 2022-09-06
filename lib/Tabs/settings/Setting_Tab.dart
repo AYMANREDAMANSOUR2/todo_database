@@ -17,13 +17,13 @@ class _SettingsTabState extends State<SettingsTab> {
   Widget build(BuildContext context) {
     var provider = Provider.of<AppProvider>(context) ;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20.0 , horizontal: 20),
+      padding:  EdgeInsets.symmetric(vertical: 20.0 , horizontal: 20),
       child: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              AppLocalizations.of(context)!.themes,
+              AppLocalizations.of(context)!.mode,
               style:
             TextStyle(color:  provider.isDark() ? Colors.white : Colors.black , fontWeight: FontWeight.bold),),
             InkWell(
@@ -31,10 +31,10 @@ class _SettingsTabState extends State<SettingsTab> {
                 showbottomsheetthememode() ;
               },
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0 ,vertical: 10 ),
+                padding:  EdgeInsets.symmetric(horizontal: 8.0 ,vertical: 10 ),
                 child: Container(
-                  margin: EdgeInsets.only(top: 7 ,left: 20),
-                  padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+                  margin:  EdgeInsets.only(top: 7 ,left: 20),
+                  padding:  EdgeInsets.symmetric(vertical: 10,horizontal: 10),
                   decoration: BoxDecoration(
                       color: provider.isDark() ? MyTheme.darkScaffoldBackground :Colors.white ,
 
@@ -46,10 +46,10 @@ class _SettingsTabState extends State<SettingsTab> {
                       provider.isDark() ?
                       AppLocalizations.of(context)!.dark
                       : AppLocalizations.of(context)!.light
-                      ,style:TextStyle(
+                      ,style: TextStyle(
                       color:  MyTheme.lightPrimary
                     ),),
-                    Icon(Icons.arrow_drop_down_circle_outlined ,  color: MyTheme.lightPrimary,size: 30,),
+                     Icon(Icons.arrow_drop_down_circle_outlined ,  color: MyTheme.lightPrimary,size: 30,),
 
 
                   ],),
@@ -59,18 +59,19 @@ class _SettingsTabState extends State<SettingsTab> {
                 ),
               ),
             ),
-            SizedBox(height: 20,),
-            Text(AppLocalizations.of(context)!.lang,style:
+            const SizedBox(height: 20,),
+            Text(AppLocalizations.of(context)!.language,
+              style:
             TextStyle(color:  provider.isDark() ? Colors.white : Colors.black , fontWeight: FontWeight.bold),),
             InkWell(
               onTap: (){
                 showbottomsheetLang() ;
               },
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0 ,vertical: 10 ),
+                padding:  EdgeInsets.symmetric(horizontal: 8.0 ,vertical: 10 ),
                 child: Container(
-                  margin: EdgeInsets.only(top: 7 ,left: 20),
-                  padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+                  margin:  EdgeInsets.only(top: 7 ,left: 20),
+                  padding:  EdgeInsets.symmetric(vertical: 10,horizontal: 10),
                   decoration: BoxDecoration(
                       color: provider.isDark() ? MyTheme.darkScaffoldBackground :Colors.white ,
                       border: Border.all(color: MyTheme.lightPrimary)),
@@ -79,11 +80,11 @@ class _SettingsTabState extends State<SettingsTab> {
                     children: [
                       Text(
                         provider.currentLang == "en" ? 'English' : "العربية"
-                        ,style:TextStyle(
+                        ,style: TextStyle(
                         color:  MyTheme.lightPrimary
 
                       ),),
-                      Icon(Icons.arrow_drop_down_circle_outlined ,
+                       Icon(Icons.arrow_drop_down_circle_outlined ,
                         color: MyTheme.lightPrimary
                         ,size: 30,),
 
@@ -111,7 +112,7 @@ class _SettingsTabState extends State<SettingsTab> {
   }
   showbottomsheetLang() {
     showModalBottomSheet(context: context,builder: (BuildContext){
-      return LanguagebottomSheet() ;
+      return const LanguagebottomSheet() ;
     });
 
   }

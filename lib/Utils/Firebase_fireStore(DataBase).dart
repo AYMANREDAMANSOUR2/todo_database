@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../Models/Task(tofirebase&fromfirebase).dart';
-import '../ToGetDataOnly.dart';
+import '../DateFormat.dart';
 
 class MyDataBase {
   static CollectionReference<Task> getTasksCollection() {
@@ -38,6 +38,20 @@ class MyDataBase {
     return taskRef.delete();
   }
   //----------------------------------------------------------------
+  static Isdone(Task task) {
+    CollectionReference taskRef = getTasksCollection();
+    taskRef.doc(task.id).update({
+      'isDone': task.isDone==false ? true : false,
+    });
+  }
+  static Future<void> editTaskDetails(Task task) {
+    CollectionReference todoRef = getTasksCollection();
+    return todoRef.doc(task.id).update({
+      'title': task.title,
+      'description': task.description,
+      'dateTime': task.dateTime!.millisecondsSinceEpoch,
+    });
+  }
 
 
 }
